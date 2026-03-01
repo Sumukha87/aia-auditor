@@ -3,3 +3,5 @@ langchain-community
 qdrant-client
 ollama
 pypdf
+pymupdf
+langchain-text-splitters

@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# AI / Data
+ollama_data/
+qdrant_data/
+*.pdf
+*.json
+
+# Infrastructure
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+*.pem
+
+# OS
+.DS_Store

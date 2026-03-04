@@ -4,11 +4,13 @@ import hmac
 import os
 import uuid
 from pypdf import PdfReader
-
+from dotenv import load_dotenv
 # --- 1. CORE CONFIGURATION ---
 # Points to your FastAPI container in the Docker network
-API_URL = os.getenv("API_URL", "http://backend:8000")
+load_dotenv()
+API_URL = "http://backend:8000"
 INTERNAL_KEY = os.getenv("INTERNAL_API_KEY", "system_secret_123")
+MASTER_PASSWORD = os.getenv("APP_PASSWORD")
 
 st.set_page_config(
     page_title="AIA | Advanced Infra Auditor",
@@ -17,31 +19,29 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. THE SECURITY GATEKEEPER ---
 def check_password():
-    """Returns True if the user provides the correct access key."""
     if st.session_state.get("password_correct", False):
         return True
 
-    def password_entered():
-        # Use hmac for secure comparison
-        if hmac.compare_digest(st.session_state["password"], "admin123"): 
-            st.session_state["password_correct"] = True
-            del st.session_state["password"]
-        else:
-            st.session_state["password_correct"] = False
+    st.markdown("<h2 style='text-align:center; color:#00ffcc;'>🛡️ AIA AUDITOR ACCESS</h2>", unsafe_allow_html=True)
+    
+    # Force a fresh read of the environment
+    master_pwd = os.environ.get("APP_PASSWORD")
 
-    st.markdown("""
-        <div style='text-align: center; padding: 100px 0px;'>
-            <h1 style='color: #00ffcc; font-family: "JetBrains Mono", monospace;'>🛡️ Super Duper Ai Cloud Assistant </h1>
-            <p style='color: #888;'>ENCRYPTED TERMINAL ACCESS REQUIRED</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    st.text_input("ENTER SYSTEM ACCESS KEY", type="password", on_change=password_entered, key="password")
-    
-    if st.session_state.get("password_correct") == False:
-        st.error("❌ ACCESS DENIED: INVALID CREDENTIALS")
+    with st.form("login_form"):
+        pwd_input = st.text_input("ENTER SYSTEM ACCESS KEY", type="password")
+        submit_button = st.form_submit_button("AUTHENTICATE")
+
+        if submit_button:
+            if master_pwd and hmac.compare_digest(pwd_input, master_pwd):
+                st.session_state["password_correct"] = True
+                st.rerun()
+            elif not master_pwd:
+                # This specifically helps us debug if the command override worked
+                st.error("🚨 CRITICAL: Environment Variable not found in process.")
+            else:
+                st.error("❌ ACCESS DENIED: INVALID KEY")
+                
     return False
 
 # --- 3. CUSTOM CYBER-SECURITY CSS ---

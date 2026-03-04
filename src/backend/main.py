@@ -27,7 +27,12 @@ async def process_audit(req: AuditRequest):
     # Apply category filter if auditing
     q_filter = {"must": [{"key": "category", "match": {"value": "benchmarks"}}]} if req.mode == "audit" else None
 
-    results = client.search(collection_name=COLLECTION, query_vector=vector, query_filter=q_filter, limit=5)
+    results = client.query_points(
+    collection_name=COLLECTION, 
+    query=vector, 
+    query_filter=q_filter, 
+    limit=5
+    ).points
     context = "\n".join([f"SOURCE: {h.payload['source']}\n{h.payload['text']}" for h in results])
 
     # 2. LLM: Generate the report

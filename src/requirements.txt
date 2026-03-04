@@ -5,3 +5,7 @@ ollama
 pypdf
 pymupdf
 langchain-text-splitters
+streamlit
+streamlit-extras
+pandas
+openpyxl

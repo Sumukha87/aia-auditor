@@ -9,7 +9,11 @@ from dotenv import load_dotenv
 
 # --- 1. CORE CONFIGURATION ---
 load_dotenv()
-API_URL = "http://backend:8000"
+# Look for BACKEND_URL from Terraform, fallback to local for development
+BACKEND_BASE = os.getenv("BACKEND_URL", "http://localhost:8080")
+# Ensure we don't have a trailing slash before appending
+API_URL = BACKEND_BASE.rstrip("/") 
+
 INTERNAL_KEY = os.getenv("INTERNAL_API_KEY", "system_secret_123")
 MASTER_PASSWORD = os.getenv("APP_PASSWORD")
 

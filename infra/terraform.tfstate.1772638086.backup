@@ -1,0 +1,248 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.6",
+  "serial": 5,
+  "lineage": "4741a172-34a2-18a0-10f9-00464b91e01a",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "google_artifact_registry_repository",
+      "name": "repo",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cleanup_policies": [],
+            "cleanup_policy_dry_run": false,
+            "create_time": "2026-03-04T14:42:43.970977Z",
+            "description": "",
+            "docker_config": [],
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "format": "DOCKER",
+            "id": "projects/ai-auditor-489210/locations/us-central1/repositories/aia-auditor-repo",
+            "kms_key_name": "",
+            "labels": {},
+            "location": "us-central1",
+            "maven_config": [],
+            "mode": "STANDARD_REPOSITORY",
+            "name": "aia-auditor-repo",
+            "project": "ai-auditor-489210",
+            "registry_uri": "us-central1-docker.pkg.dev/ai-auditor-489210/aia-auditor-repo",
+            "remote_repository_config": [],
+            "repository_id": "aia-auditor-repo",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null,
+            "update_time": "2026-03-04T15:18:41.107710Z",
+            "virtual_repository_config": [],
+            "vulnerability_scanning_config": [
+              {
+                "enablement_config": "",
+                "enablement_state": "SCANNING_DISABLED",
+                "enablement_state_reason": "API containerscanning.googleapis.com is not enabled."
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloud_run_v2_service",
+      "name": "backend",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "status": "tainted",
+          "schema_version": 0,
+          "attributes": {
+            "annotations": {},
+            "binary_authorization": [],
+            "build_config": [],
+            "client": "",
+            "client_version": "",
+            "conditions": [
+              {
+                "execution_reason": "",
+                "last_transition_time": "2026-03-04T15:22:33.855545Z",
+                "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=ai-auditor-489210\u0026resource=cloud_run_revision/service_name/aia-backend/revision_name/aia-backend-00001-k7k\u0026advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22aia-backend%22%0Aresource.labels.revision_name%3D%22aia-backend-00001-k7k%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+                "reason": "",
+                "revision_reason": "HEALTH_CHECK_CONTAINER_ERROR",
+                "severity": "",
+                "state": "CONDITION_FAILED",
+                "type": "RoutesReady"
+              },
+              {
+                "execution_reason": "",
+                "last_transition_time": "2026-03-04T15:22:33.777659Z",
+                "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=ai-auditor-489210\u0026resource=cloud_run_revision/service_name/aia-backend/revision_name/aia-backend-00001-k7k\u0026advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22aia-backend%22%0Aresource.labels.revision_name%3D%22aia-backend-00001-k7k%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+                "reason": "",
+                "revision_reason": "HEALTH_CHECK_CONTAINER_ERROR",
+                "severity": "",
+                "state": "CONDITION_FAILED",
+                "type": "ConfigurationsReady"
+              }
+            ],
+            "create_time": "2026-03-04T15:21:45.801738Z",
+            "creator": "sumukha.sheshn5@gmail.com",
+            "custom_audiences": [],
+            "default_uri_disabled": false,
+            "delete_time": "",
+            "deletion_protection": true,
+            "description": "",
+            "effective_annotations": {},
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "etag": "\"CImcoc0GEJCapv4C/cHJvamVjdHMvYWktYXVkaXRvci00ODkyMTAvbG9jYXRpb25zL3VzLWNlbnRyYWwxL3NlcnZpY2VzL2FpYS1iYWNrZW5k\"",
+            "expire_time": "",
+            "generation": "1",
+            "iap_enabled": false,
+            "id": "projects/ai-auditor-489210/locations/us-central1/services/aia-backend",
+            "ingress": "INGRESS_TRAFFIC_ALL",
+            "invoker_iam_disabled": false,
+            "labels": {},
+            "last_modifier": "sumukha.sheshn5@gmail.com",
+            "latest_created_revision": "projects/ai-auditor-489210/locations/us-central1/services/aia-backend/revisions/aia-backend-00001-k7k",
+            "latest_ready_revision": "",
+            "launch_stage": "GA",
+            "location": "us-central1",
+            "multi_region_settings": [],
+            "name": "aia-backend",
+            "observed_generation": "1",
+            "project": "ai-auditor-489210",
+            "reconciling": false,
+            "scaling": [
+              {
+                "manual_instance_count": 0,
+                "max_instance_count": 3,
+                "min_instance_count": 0,
+                "scaling_mode": ""
+              }
+            ],
+            "template": [
+              {
+                "annotations": {},
+                "containers": [
+                  {
+                    "args": [],
+                    "base_image_uri": "",
+                    "build_info": [],
+                    "command": [],
+                    "depends_on": [],
+                    "env": [
+                      {
+                        "name": "OLLAMA_HOST",
+                        "value": "http://localhost:11434",
+                        "value_source": []
+                      }
+                    ],
+                    "image": "us-central1-docker.pkg.dev/ai-auditor-489210/aia-auditor-repo/backend:latest",
+                    "liveness_probe": [],
+                    "name": "",
+                    "ports": [
+                      {
+                        "container_port": 8080,
+                        "name": "http1"
+                      }
+                    ],
+                    "readiness_probe": [],
+                    "resources": [
+                      {
+                        "cpu_idle": true,
+                        "limits": {
+                          "cpu": "1",
+                          "memory": "2Gi"
+                        },
+                        "startup_cpu_boost": false
+                      }
+                    ],
+                    "startup_probe": [
+                      {
+                        "failure_threshold": 1,
+                        "grpc": [],
+                        "http_get": [],
+                        "initial_delay_seconds": 0,
+                        "period_seconds": 240,
+                        "tcp_socket": [
+                          {
+                            "port": 8080
+                          }
+                        ],
+                        "timeout_seconds": 240
+                      }
+                    ],
+                    "volume_mounts": [],
+                    "working_dir": ""
+                  }
+                ],
+                "encryption_key": "",
+                "execution_environment": "",
+                "gpu_zonal_redundancy_disabled": false,
+                "health_check_disabled": false,
+                "labels": {},
+                "max_instance_request_concurrency": 80,
+                "node_selector": [],
+                "revision": "",
+                "scaling": [
+                  {
+                    "max_instance_count": 1,
+                    "min_instance_count": 0
+                  }
+                ],
+                "service_account": "480333129242-compute@developer.gserviceaccount.com",
+                "session_affinity": false,
+                "timeout": "300s",
+                "volumes": [],
+                "vpc_access": []
+              }
+            ],
+            "terminal_condition": [
+              {
+                "execution_reason": "",
+                "last_transition_time": "2026-03-04T15:22:33.855545Z",
+                "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=ai-auditor-489210\u0026resource=cloud_run_revision/service_name/aia-backend/revision_name/aia-backend-00001-k7k\u0026advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22aia-backend%22%0Aresource.labels.revision_name%3D%22aia-backend-00001-k7k%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+                "reason": "",
+                "revision_reason": "HEALTH_CHECK_CONTAINER_ERROR",
+                "severity": "",
+                "state": "CONDITION_FAILED",
+                "type": "Ready"
+              }
+            ],
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null,
+            "traffic": [
+              {
+                "percent": 100,
+                "revision": "",
+                "tag": "",
+                "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+              }
+            ],
+            "traffic_statuses": [],
+            "uid": "fa7c8595-641f-4b8e-91de-541381d26c0e",
+            "update_time": "2026-03-04T15:21:45.801738Z",
+            "uri": "",
+            "urls": [
+              "https://aia-backend-480333129242.us-central1.run.app"
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

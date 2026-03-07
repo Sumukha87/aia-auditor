@@ -1,2 +1,5 @@
 project_id ="ai-auditor-489210"
 app_pass = "SuperDuperPassword2077"
+qdrant_url  = "https://828e076d-d015-40a9-8070-0b5827952b92.europe-west3-0.gcp.cloud.qdrant.io"
+qdrant_api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.YkDsbYIXw3jwfesOAHdMZi1JjzssTegfF6NjFil_O0I"
+internal_key   = "choose-a-random-password-for-internal-talk"

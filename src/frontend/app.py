@@ -87,13 +87,22 @@ if check_password():
         
         if uploaded_file and st.button("🚀 EXECUTE INGESTION"):
             with st.spinner("Slicing and Embedding..."):
+                # 1. Package the file
                 files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
-                headers = {"X-Internal-Key": INTERNAL_KEY}
-                resp = requests.post(f"{API_URL}/api/v1/ingest", files=files, headers=headers)
+                
+                # 2. Package the form data (Must match FastAPI 'Form' exact variable names)
+                form_data = {
+                    "internal_key": INTERNAL_KEY,
+                    "category": "benchmarks"
+                }
+                
+                # 3. Send both files and form_data
+                resp = requests.post(f"{API_URL}/api/v1/ingest", files=files, data=form_data)
+                
                 if resp.status_code == 200:
                     st.success(f"Merged {uploaded_file.name} into Vault.")
                 else:
-                    st.error("Ingestion failed.")
+                    st.error(f"Ingestion failed: {resp.status_code} - {resp.text}")
 
         st.divider()
         if st.button("TERMINATE SESSION"):
